@@ -44,6 +44,10 @@ namespace AdvanceProjectMars_Task6.Pages
             AddButton.Click();
             Thread.Sleep(5000);
         }
+        public void DeleteEducationRecord(string CollegeUniversityName)
+        {
+            DeleteButton.Click();
+        }
         public void DeleteAllEducationRecords()
         {
             HomeToEducationPage homeToEducationPageObj = new HomeToEducationPage();

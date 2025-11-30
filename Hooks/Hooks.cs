@@ -1,4 +1,5 @@
 ﻿using AdvanceProjectMars_Task6.Pages;
+using AdvanceProjectMars_Task6.State;
 using AdvanceProjectMars_Task6.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -33,6 +34,12 @@ namespace AdvanceProjectMars_Task6.Hooks
             loginPageObj.LoginActions();
         }
 
+        [BeforeScenario()]
+        public void BeforeScenario()
+        {
+            var educationState = new EducationState();
+            ScenarioContext.Current.Set(educationState, "EducationState");
+        }
 
         //[BeforeScenario(Order = 1)]
         //public void FirstBeforeScenario()

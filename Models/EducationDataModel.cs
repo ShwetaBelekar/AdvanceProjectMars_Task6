@@ -18,6 +18,7 @@ namespace AdvanceProjectMars_Task6.Models
         [JsonPropertyName("Title")]
         public string Title { get; set; }
 
+
         [JsonPropertyName("Degree")]
         public string Degree { get; set; }
 

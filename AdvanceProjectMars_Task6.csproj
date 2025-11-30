@@ -28,6 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Configuration\Education_TestCases\DeleteEducationRecord_scenario.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Configuration\Education_TestCases\education_record_scenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

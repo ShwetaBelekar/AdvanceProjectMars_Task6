@@ -21,3 +21,10 @@ Given I load the education records from the 'Configuration\Education_TestCases\e
 Given I navigate to Education
 When I create and verify all education records
 Then the batch creation process should be successful
+
+Scenario: Delete existing education records using external JSON data
+Given I load the education records from the 'Configuration\Education_TestCases\DeleteEducationRecord_scenario.json' file
+Given I navigate to Education
+When I see education records
+When I delete the existing education record
+Then I should see a message that record deleted successfully
