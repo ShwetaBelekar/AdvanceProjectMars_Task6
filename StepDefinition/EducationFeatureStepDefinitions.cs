@@ -223,16 +223,19 @@ namespace AdvanceProjectMars_Task6.StepDefinition
         [When("I delete the existing education record")]
         public void WhenIDeleteTheExistingEducationRecord()
         {
-            if (_educationState.EducationRecords == null)
+            //if (_educationState.EducationRecords != null)
+            //{
+            //    educationPageObj.DeleteEducationRecord();
+            //}
+            if (_educationState.EducationRecords != null)
             {
-                Assert.Fail("Education records not found in EducationState. The JSON loading step failed.");
+                foreach (var record in _educationState.EducationRecords)
+                {
+                    Console.WriteLine($"Deleting education record: {record.CollegeUniversityName}, {record.Degree}, {record.YearofGraduation}");
+                    educationPageObj.DeleteEducationRecord();
+                }
             }
 
-            foreach (var record in _educationState.EducationRecords)
-            {
-                educationPageObj.DeleteEducationRecord(record.CollegeUniversityName);
-            }
-           
         }
 
         

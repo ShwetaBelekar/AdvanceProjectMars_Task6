@@ -16,12 +16,14 @@ A short summary of the feature:This feature uses an external JSON file to drive 
 #	| Victoria University   | New Zealand                | Associate | Arts      |             2024 |
 #	| NYC College           | United States              | MFA       | Science   |             2001 |
 #	| Model College         | Switzerland                | M.B.A     | Commerce  |             2020 |
+@MultipleRecords
 Scenario: Create multiple education records using external JSON data
 Given I load the education records from the 'Configuration\Education_TestCases\education_record_scenario.json' file
 Given I navigate to Education
 When I create and verify all education records
 Then the batch creation process should be successful
 
+@SingleRecord
 Scenario: Delete existing education records using external JSON data
 Given I load the education records from the 'Configuration\Education_TestCases\DeleteEducationRecord_scenario.json' file
 Given I navigate to Education

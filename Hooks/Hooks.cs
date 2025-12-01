@@ -17,28 +17,41 @@ namespace AdvanceProjectMars_Task6.Hooks
     public class Hooks : CommonDriver
     {
         private readonly IObjectContainer _container;
-        //private readonly ScenarioContext _scenarioContext;
 
+       
         public Hooks(IObjectContainer container)
         {
             _container = container;
-            //_scenarioContext = scenarioContext;
-
+            
         }
         [BeforeFeature()]
-        public static void BeforeFeature()
+        public static void BeforeFeature(FeatureContext featureContext)
         {
             IWebDriver driver = new ChromeDriver();
             CommonDriver.InitializeDriver(driver);
             LoginPage loginPageObj = new LoginPage();
             loginPageObj.LoginActions();
-        }
 
+            
+        }
         [BeforeScenario()]
         public void BeforeScenario()
         {
             var educationState = new EducationState();
             ScenarioContext.Current.Set(educationState, "EducationState");
+        }
+        [AfterScenario("MultipleRecords")]
+        public void AfterMultipleRecordsScenario()
+        {
+            EducationPage educationPageObj = new EducationPage();
+            educationPageObj.DeleteAllEducationRecords();
+        }
+
+        [AfterScenario("SingleRecord")]
+        public void AfterSingleRecordScenario()
+        {
+            EducationPage educationPageObj = new EducationPage();
+            educationPageObj.DeleteAllEducationRecords();
         }
 
         //[BeforeScenario(Order = 1)]
@@ -66,13 +79,13 @@ namespace AdvanceProjectMars_Task6.Hooks
         //}
 
         [AfterFeature()]
-        public static void AfterFeature(FeatureContext featureContext)
+        public static void AfterFeature()
         {
-            if (featureContext.FeatureInfo.Tags.Contains("EducationDataDriven"))
-            {
-                EducationPage educationPageObj = new EducationPage();
-                educationPageObj.DeleteAllEducationRecords();
-            }
+            //if (featureContext.FeatureInfo.Tags.Contains("EducationDataDriven"))
+            //{
+            //    EducationPage educationPageObj = new EducationPage();
+            //    educationPageObj.DeleteAllEducationRecords();
+            //}
             var driver = CommonDriver.Driver;
             if (driver != null)
             {

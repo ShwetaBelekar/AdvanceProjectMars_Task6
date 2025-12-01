@@ -30,7 +30,7 @@ namespace AdvanceProjectMars_Task6.Pages
 
         private IWebElement CancelButton => Driver.FindElement(By.XPath("//input[@value='Cancel']"));
 
-        private IWebElement DeleteButton => Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[last()]/tr/td[6]/span[2]/i"));
+        private IWebElement DeleteButton => Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[6]/span[2]"));
         private IList<IWebElement> DeleteButtons => Driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[6]/span[2]/i"));
         public void CreateEducationRecord(string CollegeUniversityName, string CountryofCollegeUniversity, string Title, string Degree, string YearofGraduation)
         {
@@ -42,11 +42,19 @@ namespace AdvanceProjectMars_Task6.Pages
             DegreeTextbox.SendKeys(Degree);
             YearOfGraduationDropdownbox.SendKeys(YearofGraduation);
             AddButton.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
         }
-        public void DeleteEducationRecord(string CollegeUniversityName)
+        public void DeleteEducationRecord()
         {
-            DeleteButton.Click();
+
+            Thread.Sleep(3000);
+                DeleteButton.Click();
+
+            Thread.Sleep(3000);
+            //Thread.Sleep(3000);
+
+            //IWebElement DeleteButton = Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[6]/span[2]"));
+            //DeleteButton.Click();
         }
         public void DeleteAllEducationRecords()
         {

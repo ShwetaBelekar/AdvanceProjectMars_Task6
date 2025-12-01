@@ -1,9 +1,15 @@
-﻿Feature: CertificationFeature
+﻿@CertificationDataDriven
+Feature: CertificationFeature
+As a Project_Mars user
+I would like to create, edit and delete certification records
+So that I can manage certification successfully
+A short summary of the feature:This feature uses an external JSON file to drive the creation
 
-A short summary of the feature
 
-@tag1
-Scenario: [scenario name]
-	Given [context]
-	When [action]
-	Then [outcome]
+
+@MultipleRecords
+Scenario: Create multiple valid certification records using external JSON data
+Given I load the certification records from the 'Configuration\Certification_TestCases\Certification_ValidRecord.json' file
+Given I navigate to Certification
+When I create and verify all certification records
+Then the batch should be created successfully

@@ -1,0 +1,37 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Create multiple valid certification records using external JSON data",
+  "tags": [ "@MultipleRecords" ],
+  "examples": {
+    "data": [
+      {
+        "CollegeUniversityName": "Mumbai University",
+        "CountryofCollegeUniversity": "India",
+        "Title": "PHD",
+        "Degree": "Economics",
+        "YearofGraduation": 2007
+      },
+      {
+        "CollegeUniversityName": "Victoria University",
+        "CountryofCollegeUniversity": "New Zealand",
+        "Title": "Associate",
+        "Degree": "Arts",
+        "YearofGraduation": 2024
+      },
+      {
+        "CollegeUniversityName": "NYC College",
+        "CountryofCollegeUniversity": "United States",
+        "Title": "MFA",
+        "Degree": "Science",
+        "YearofGraduation": 2001
+      },
+      {
+        "CollegeUniversityName": "Model College",
+        "CountryofCollegeUniversity": "Switzerland",
+        "Title": "M.B.A",
+        "Degree": "Commerce",
+        "YearofGraduation": 2020
+      }
+    ]
+  }
+}
