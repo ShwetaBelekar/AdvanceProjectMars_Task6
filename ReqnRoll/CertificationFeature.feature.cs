@@ -20,14 +20,14 @@ namespace AdvanceProjectMars_Task6.ReqnRoll
     [global::NUnit.Framework.TestFixtureAttribute()]
     [global::NUnit.Framework.DescriptionAttribute("CertificationFeature")]
     [global::NUnit.Framework.FixtureLifeCycleAttribute(global::NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    [global::NUnit.Framework.CategoryAttribute("CertificationDataDriven")]
+    [global::NUnit.Framework.CategoryAttribute("Certifications")]
     public partial class CertificationFeatureFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = new string[] {
-                "CertificationDataDriven"};
+                "Certifications"};
         
         private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "ReqnRoll", "CertificationFeature", "As a Project_Mars user\r\nI would like to create, edit and delete certification rec" +
                 "ords\r\nSo that I can manage certification successfully\r\nA short summary of the fe" +

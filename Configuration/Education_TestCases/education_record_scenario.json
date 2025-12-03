@@ -1,6 +1,7 @@
 {
   "scenario_type": "Scenario",
   "name": "Create multiple education records using external JSON data",
+  "tags": [ "@MultipleRecords" ],
   "examples": {
     "data": [
       {

@@ -1,6 +1,7 @@
 {
   "scenario_type": "Scenario",
   "name": "Delete existing education records using external JSON data",
+  "tags": [ "@SingleRecord" ],
   "examples": {
     "data": [
       {
@@ -10,7 +11,7 @@
         "Degree": "Economics",
         "YearofGraduation": 2007
       }
-      
+
     ]
   }
 }

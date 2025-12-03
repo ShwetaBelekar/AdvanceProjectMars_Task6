@@ -23,6 +23,47 @@ namespace AdvanceProjectMars_Task6.Pages
 
         private IWebElement updateButton => Driver.FindElement(By.XPath("//input[@value='Update']"));
 
-        private IWebElement deleteButton => Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[last()]/tr/td[4]/span[2]/i"));
+        private IWebElement deleteButton => Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]"));
+        private IList<IWebElement> DeleteButtons => Driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
+        public void CreateCertificationRecord(string CertificateorAward, string CertifiedFrom, string Year)
+        {
+            Thread.Sleep(3000);
+            addNewButton.Click();
+            Thread.Sleep(2000);
+            certificationOrAwardTextbox.Click();
+            certificationOrAwardTextbox.SendKeys(CertificateorAward);
+            certifiedFromTextbox.Click();
+            certifiedFromTextbox.SendKeys(CertifiedFrom);
+            Thread.Sleep(2000);
+            yearDropdownButton.Click();
+            yearDropdownButton.SendKeys(Year);
+            addButton.Click();
+            Thread.Sleep(5000);
+        }
+        public void DeleteCertificationRecord()
+        {
+
+            Thread.Sleep(3000);
+            deleteButton.Click();
+
+            Thread.Sleep(3000);
+           
+        }
+        public void DeleteAllCertificationsRecords()
+        {
+            HomeToCertificationsPage homeToCertificationsPageObj = new HomeToCertificationsPage();
+            homeToCertificationsPageObj.NavigateToCertifications();
+
+            var deleteButtons = Driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
+            if (deleteButtons.Count > 0)
+            {
+                for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                {
+                    deleteButtons[i].Click();
+                    Thread.Sleep(2000); // Add a wait to ensure the delete operation is complete
+                }
+            }
+        }
+
     }
 }

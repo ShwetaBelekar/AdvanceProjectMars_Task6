@@ -20,14 +20,14 @@ namespace AdvanceProjectMars_Task6.ReqnRoll
     [global::NUnit.Framework.TestFixtureAttribute()]
     [global::NUnit.Framework.DescriptionAttribute("EducationFeature")]
     [global::NUnit.Framework.FixtureLifeCycleAttribute(global::NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    [global::NUnit.Framework.CategoryAttribute("EducationDataDriven")]
+    [global::NUnit.Framework.CategoryAttribute("Education")]
     public partial class EducationFeatureFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = new string[] {
-                "EducationDataDriven"};
+                "Education"};
         
         private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "ReqnRoll", "EducationFeature", "As a Project_Mars user\r\nI would like to create, edit and delete education records" +
                 "\r\nSo that I can manage education successfully\r\nA short summary of the feature:Th" +

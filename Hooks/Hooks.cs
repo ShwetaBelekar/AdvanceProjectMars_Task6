@@ -17,8 +17,9 @@ namespace AdvanceProjectMars_Task6.Hooks
     public class Hooks : CommonDriver
     {
         private readonly IObjectContainer _container;
-
        
+
+
         public Hooks(IObjectContainer container)
         {
             _container = container;
@@ -34,58 +35,15 @@ namespace AdvanceProjectMars_Task6.Hooks
 
             
         }
-        [BeforeScenario()]
-        public void BeforeScenario()
-        {
-            var educationState = new EducationState();
-            ScenarioContext.Current.Set(educationState, "EducationState");
-        }
-        [AfterScenario("MultipleRecords")]
-        public void AfterMultipleRecordsScenario()
-        {
-            EducationPage educationPageObj = new EducationPage();
-            educationPageObj.DeleteAllEducationRecords();
-        }
+       
+        
+       
 
-        [AfterScenario("SingleRecord")]
-        public void AfterSingleRecordScenario()
-        {
-            EducationPage educationPageObj = new EducationPage();
-            educationPageObj.DeleteAllEducationRecords();
-        }
-
-        //[BeforeScenario(Order = 1)]
-        //public void FirstBeforeScenario()
-        //{
-        //    IWebDriver driver = new ChromeDriver();
-
-        //    _container.RegisterInstanceAs<IWebDriver>(driver);
-        //    CommonDriver.InitializeDriver(driver);
-        //    LoginPage loginPageObj = new LoginPage();
-        //    loginPageObj.LoginActions();
-        //}
-
-
-        //[AfterScenario()]
-        //public void CleanUp(FeatureContext featureContext)
-        //{
-        //    if (featureContext.FeatureInfo.Tags.Contains(""))
-        //    {
-        //        EducationPage educationPageObj = new EducationPage();
-        //        educationPageObj.DeleteAllEducationRecords();
-        //    }
-
-
-        //}
 
         [AfterFeature()]
         public static void AfterFeature()
         {
-            //if (featureContext.FeatureInfo.Tags.Contains("EducationDataDriven"))
-            //{
-            //    EducationPage educationPageObj = new EducationPage();
-            //    educationPageObj.DeleteAllEducationRecords();
-            //}
+           
             var driver = CommonDriver.Driver;
             if (driver != null)
             {

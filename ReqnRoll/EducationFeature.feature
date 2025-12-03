@@ -1,4 +1,4 @@
-﻿@EducationDataDriven
+﻿@Education
 Feature: EducationFeature
 As a Project_Mars user
 I would like to create, edit and delete education records

@@ -1,4 +1,4 @@
-﻿@CertificationDataDriven
+﻿@Certifications
 Feature: CertificationFeature
 As a Project_Mars user
 I would like to create, edit and delete certification records
