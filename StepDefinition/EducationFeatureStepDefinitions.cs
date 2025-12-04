@@ -15,9 +15,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 
+
 namespace AdvanceProjectMars_Task6.StepDefinition
 {
     [Binding]
+    [Scope(Tag = "Education")]
+
     public sealed class EducationFeatureStepDefinitions : CommonDriver
     {
         private readonly EducationTestState _educationState;
@@ -26,33 +29,33 @@ namespace AdvanceProjectMars_Task6.StepDefinition
         {
             _educationState = state;
         }
-        [BeforeScenario()]
-        public void BeforeScenario()
-        {
+        //[BeforeScenario("Education")]
+        //public void BeforeScenario()
+        //{
 
 
 
-            var educationState = new EducationTestState();
-            ScenarioContext.Current.Set(educationState, "EducationState");
+        //    var educationState = new EducationTestState();
+        //    ScenarioContext.Current.Set(educationState, "EducationState");
 
-        }
-        [AfterScenario("MultipleRecords")]
-        public void AfterMultipleRecordsScenario()
-        {
+        //}
+        //[AfterScenario("Education", "MultipleRecords")]
+        //public void AfterMultipleRecordsScenario()
+        //{
 
-            EducationPage educationPageObj = new EducationPage();
-            educationPageObj.DeleteAllEducationRecords();
+        //    EducationPage educationPageObj = new EducationPage();
+        //    educationPageObj.DeleteAllEducationRecords();
 
-        }
+        //}
 
-        [AfterScenario("SingleRecord")]
-        public void AfterSingleRecordScenario()
-        {
+        //[AfterScenario("Education", "SingleRecord")]
+        //public void AfterSingleRecordScenario()
+        //{
 
-           EducationPage educationPageObj = new EducationPage();
-            educationPageObj.DeleteAllEducationRecords();
+        //   EducationPage educationPageObj = new EducationPage();
+        //    educationPageObj.DeleteAllEducationRecords();
 
-        }
+        //}
 
 
 

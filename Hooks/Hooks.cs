@@ -35,9 +35,67 @@ namespace AdvanceProjectMars_Task6.Hooks
 
             
         }
-       
-        
-       
+        [Binding]
+        public class TestHooks
+        {
+            private readonly IObjectContainer _container;
+
+            // Use Dependency Injection (DI) to get the container
+            public TestHooks(IObjectContainer container)
+            {
+                _container = container;
+            }
+
+            // --- BEFORE SCENARIO HOOK ---
+
+            [BeforeScenario(Order = 1)] // Run first to set up the state
+            public void BeforeScenarioSetup()
+            {
+                // 1. Get the current feature's tags
+                var featureTags = FeatureContext.Current.FeatureInfo.Tags;
+
+                if (featureTags.Contains("Education"))
+                {
+                    // 2. Education Setup
+                    var educationState = new EducationTestState();
+                    // Use DI to register the state object
+                    _container.RegisterInstanceAs(educationState);
+                }
+                else if (featureTags.Contains("Certifications"))
+                {
+                    // 2. Certifications Setup
+                    var certificationState = new CertificationTestState();
+                    _container.RegisterInstanceAs(certificationState);
+                }
+
+                // You could also add common setup logic here (e.g., driver initialization)
+            }
+
+            // --- AFTER SCENARIO HOOK ---
+
+            // Scoped to run only for scenarios tagged 'MultipleRecords' or 'SingleRecord'
+            [AfterScenario("MultipleRecords", "SingleRecord", Order = 100)] // Run last for cleanup
+            public void AfterRecordCleanup()
+            {
+                // 1. Get the current feature's tags
+                var featureTags = FeatureContext.Current.FeatureInfo.Tags;
+
+                if (featureTags.Contains("Education"))
+                {
+                    // 2. Education Cleanup
+                    EducationPage educationPageObj = new EducationPage();
+                    educationPageObj.DeleteAllEducationRecords();
+                }
+                else if (featureTags.Contains("Certifications"))
+                {
+                    // 2. Certification Cleanup
+                    CertificationsPage certificationsPageObj = new CertificationsPage();
+                    certificationsPageObj.DeleteAllCertificationsRecords();
+                }
+            }
+        }
+
+
 
 
         [AfterFeature()]

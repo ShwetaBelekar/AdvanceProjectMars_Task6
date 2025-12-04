@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 namespace AdvanceProjectMars_Task6.StepDefinition
 {
     [Binding]
+    [Scope(Tag = "Certifications")]
     public sealed class CertificationsFeatureStepDefinitions : CommonDriver
     {
         private readonly CertificationTestState _certificationState;
@@ -22,31 +23,31 @@ namespace AdvanceProjectMars_Task6.StepDefinition
         {
             _certificationState = state;
         }
-        [BeforeScenario()]
-        public void BeforeScenario()
-        {
+        //[BeforeScenario]
+        //public void BeforeScenario()
+        //{
 
-            var certificationState = new CertificationTestState();
-            ScenarioContext.Current.Set(certificationState, "CertificationState");
+        //    var certificationState = new CertificationTestState();
+        //    ScenarioContext.Current.Set(certificationState, "CertificationState");
 
-        }
-        [AfterScenario("MultipleRecords")]
-        public void AfterMultipleRecordsScenario()
-        {
+        //}
+        //[AfterScenario("MultipleRecords")]
+        //public void AfterMultipleRecordsScenario()
+        //{
 
-            CertificationsPage certificationsPageObj = new CertificationsPage();
-            certificationsPageObj.DeleteAllCertificationsRecords();
+        //    CertificationsPage certificationsPageObj = new CertificationsPage();
+        //    certificationsPageObj.DeleteAllCertificationsRecords();
 
-        }
+        //}
 
-        [AfterScenario("SingleRecord")]
-        public void AfterSingleRecordScenario()
-        {
+        //[AfterScenario("SingleRecord")]
+        //public void AfterSingleRecordScenario()
+        //{
 
-            CertificationsPage certificationsPageObj = new CertificationsPage();
-            certificationsPageObj.DeleteAllCertificationsRecords();
+        //    CertificationsPage certificationsPageObj = new CertificationsPage();
+        //    certificationsPageObj.DeleteAllCertificationsRecords();
 
-        }
+        //}
         private CertificationsPage certificationsPageObj = new CertificationsPage();
         private HomeToCertificationsPage homeToCertificationsPageObj = new HomeToCertificationsPage();
         [Given("I load the certification records from the {string} file")]
@@ -94,8 +95,6 @@ namespace AdvanceProjectMars_Task6.StepDefinition
                 throw new Exception($"Error during JSON loading or deserialization: {ex.Message}", ex);
             }
         }
-
-
 
         [Given("I navigate to Certification")]
         public void GivenINavigateToCertification()
@@ -157,7 +156,6 @@ namespace AdvanceProjectMars_Task6.StepDefinition
                     Console.WriteLine($"    [ERROR] Could not find the new record element for {record.CertificateorAward}. Creation likely failed or locator is incorrect.");
                 }
             }
-
         }
 
         [Then("the batch should be created successfully")]
@@ -175,6 +173,7 @@ namespace AdvanceProjectMars_Task6.StepDefinition
                 Assert.Fail($"Only {_certificationState.SuccessCount} out of {_certificationState.TotalCount} records were successfully created and verified. Check previous console output for iteration details.");
             }
         }
+
 
     }
 }
