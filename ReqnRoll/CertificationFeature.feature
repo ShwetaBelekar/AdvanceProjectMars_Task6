@@ -13,3 +13,12 @@ Given I load the certification records from the 'Configuration\Certification_Tes
 Given I navigate to Certification
 When I create and verify all certification records
 Then the batch should be created successfully
+
+
+@SingleRecord
+Scenario: Delete existing certification records using external JSON data
+Given I load the certification records from the 'Configuration\Certification_TestCases\Certification_Deleteexistingrecord.json' file
+Given I navigate to Certification
+When I see certification records
+When I delete the existing certification record
+Then I should see a message that record deleted successfully

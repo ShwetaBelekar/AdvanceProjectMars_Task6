@@ -32,19 +32,10 @@ namespace AdvanceProjectMars_Task6.Hooks
             CommonDriver.InitializeDriver(driver);
             LoginPage loginPageObj = new LoginPage();
             loginPageObj.LoginActions();
-
+            loginPageObj.VerifyUserInHomePage();
             
         }
-        [Binding]
-        public class TestHooks
-        {
-            private readonly IObjectContainer _container;
-
-            // Use Dependency Injection (DI) to get the container
-            public TestHooks(IObjectContainer container)
-            {
-                _container = container;
-            }
+       
 
             // --- BEFORE SCENARIO HOOK ---
 
@@ -93,7 +84,7 @@ namespace AdvanceProjectMars_Task6.Hooks
                     certificationsPageObj.DeleteAllCertificationsRecords();
                 }
             }
-        }
+        
 
 
 

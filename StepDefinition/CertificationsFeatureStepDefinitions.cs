@@ -107,7 +107,7 @@ namespace AdvanceProjectMars_Task6.StepDefinition
         {
             if (_certificationState.Records == null || _certificationState.Records.Count == 0)
             {
-                Assert.Fail("Education records not found in EducationState. The JSON loading step failed or returned no data.");
+                Assert.Fail("Certifications records not found in CertificationState. The JSON loading step failed or returned no data.");
             }
 
             // FIX: Reset successful count using the correct property name: SuccessCount
@@ -172,6 +172,97 @@ namespace AdvanceProjectMars_Task6.StepDefinition
                 // FIX: Use the correct property names: SuccessCount and TotalCount
                 Assert.Fail($"Only {_certificationState.SuccessCount} out of {_certificationState.TotalCount} records were successfully created and verified. Check previous console output for iteration details.");
             }
+        }
+        [When("I see certification records")]
+        public void WhenISeeCertificationRecords()
+        {
+            if (_certificationState.Records == null || _certificationState.Records.Count == 0)
+            {
+                Assert.Fail("Certification records not found in CertificationState. The JSON loading step failed or returned no data.");
+            }
+
+            // FIX: Reset successful count using the correct property name: SuccessCount
+            _certificationState.SuccessCount = 0;
+
+            // FIX: Loop through the correct property name: Records
+            foreach (var record in _certificationState.Records)
+            {
+                // FIX: Store the current record using the correct property name: CurrentRecord
+                _certificationState.CurrentRecord = record;
+
+                Console.WriteLine($"--- Processing: {record.CertificateorAward} ({record.Year}) ---");
+
+                // ** Action: Call the Page Object Method **
+                certificationsPageObj.CreateCertificationRecord(
+                    record.CertificateorAward,
+                    record.CertifiedFrom,
+                    record.Year.ToString()
+                );
+
+                // ** Verification: Check the UI **
+                try
+                {
+                    string YearString = record.Year.ToString();
+
+                    // Find the elements for the newly created record (assuming it's always the last row)
+                    IWebElement newcertificateoraward = Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[last()]/tr/td[1]"));
+                    IWebElement newcertifiedfrom = Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[last()]/tr/td[2]"));
+                    IWebElement newyear = Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[last()]/tr/td[3]"));
+
+                    if (newcertificateoraward.Text == record.CertificateorAward &&
+                        newcertifiedfrom.Text == record.CertifiedFrom &&
+                        newyear.Text == YearString)
+                    {
+                        Console.WriteLine($"    [SUCCESS] Record verified for {record.CertificateorAward}.");
+                        // FIX: Increment successful count using the correct property name: SuccessCount
+                        _certificationState.SuccessCount++;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"    [FAIL] Verification mismatch for {record.CertificateorAward}. Data on screen did not match expected JSON data.");
+                    }
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine($"    [ERROR] Could not find the new record element for {record.CertificateorAward}. Creation likely failed or locator is incorrect.");
+                }
+            }
+        }
+
+        [When("I delete the existing certification record")]
+        public void WhenIDeleteTheExistingCertificationRecord()
+        {
+            certificationsPageObj.DeleteCertificationRecord();
+        }
+
+        [Then("I should see a message that record deleted successfully")]
+        public void ThenIShouldSeeAMessageThatRecordDeletedSuccessfully()
+        {
+            bool testPassed = false;
+            try
+            {
+                Wait.WaitToBeVisible(Driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 4);
+                IWebElement popupAlert = Driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+                string alertText = popupAlert.Text;
+                Console.WriteLine("Alert text: " + alertText);
+                testPassed = true;
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+
+            }
+            if (testPassed)
+            {
+                Assert.Pass("Test pass");
+            }
+            else
+            {
+                Assert.Fail("Test failed");
+            }
+
         }
 
 

@@ -18,22 +18,22 @@ namespace AdvanceProjectMars_Task6.ReqnRoll
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::NUnit.Framework.TestFixtureAttribute()]
-    [global::NUnit.Framework.DescriptionAttribute("CertificationFeature")]
+    [global::NUnit.Framework.DescriptionAttribute("ChangePasswordFeature")]
     [global::NUnit.Framework.FixtureLifeCycleAttribute(global::NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    [global::NUnit.Framework.CategoryAttribute("Certifications")]
-    public partial class CertificationFeatureFeature
+    [global::NUnit.Framework.CategoryAttribute("ChangePassword")]
+    public partial class ChangePasswordFeatureFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = new string[] {
-                "Certifications"};
+                "ChangePassword"};
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "ReqnRoll", "CertificationFeature", "As a Project_Mars user\r\nI would like to create, edit and delete certification rec" +
-                "ords\r\nSo that I can manage certification successfully\r\nA short summary of the fe" +
-                "ature:This feature uses an external JSON file to drive the creation", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "ReqnRoll", "ChangePasswordFeature", "As a Project_Mars user\r\nI should be able to change password\r\nSo that I can manage" +
+                " my login successfully\r\nA short summary of the feature:This feature uses an exte" +
+                "rnal JSON file to drive the creation", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
-#line 1 "CertificationFeature.feature"
+#line 1 "ChangePasswordFeature.feature"
 #line hidden
         
         [global::NUnit.Framework.OneTimeSetUpAttribute()]
@@ -109,19 +109,19 @@ namespace AdvanceProjectMars_Task6.ReqnRoll
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/CertificationFeature.feature.ndjson", 4);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ChangePasswordFeature.feature.ndjson", 3);
         }
         
         [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Create multiple valid certification records using external JSON data")]
-        [global::NUnit.Framework.CategoryAttribute("MultipleRecords")]
-        public async global::System.Threading.Tasks.Task CreateMultipleValidCertificationRecordsUsingExternalJSONData()
+        [global::NUnit.Framework.DescriptionAttribute("I change password using external JSON data")]
+        [global::NUnit.Framework.CategoryAttribute("SingleRecord")]
+        public async global::System.Threading.Tasks.Task IChangePasswordUsingExternalJSONData()
         {
             string[] tagsOfScenario = new string[] {
-                    "MultipleRecords"};
+                    "SingleRecord"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Create multiple valid certification records using external JSON data", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("I change password using external JSON data", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 11
@@ -135,59 +135,32 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 12
-await testRunner.GivenAsync("I load the certification records from the \'Configuration\\Certification_TestCases\\" +
-                        "Certification_ValidRecord.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("I load the change password records from the \'Configuration\\ChangePassword_TestCas" +
+                        "es\\Password_ChangePassword.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 13
-await testRunner.GivenAsync("I navigate to Certification", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.WhenAsync("I navigate to change password feature", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 14
-await testRunner.WhenAsync("I create and verify all certification records", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.ThenAsync("I create new password", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 15
-await testRunner.ThenAsync("the batch should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("The new password should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Delete existing certification records using external JSON data")]
-        [global::NUnit.Framework.CategoryAttribute("SingleRecord")]
-        public async global::System.Threading.Tasks.Task DeleteExistingCertificationRecordsUsingExternalJSONData()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "SingleRecord"};
-            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Delete existing certification records using external JSON data", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
-            string[] tagsOfRule = ((string[])(null));
-            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 16
+ await testRunner.ThenAsync("I verify if I can signin with new password", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 17
+ await testRunner.ThenAsync("I successfully signin with new password", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 18
+ await testRunner.ThenAsync("I navigate to change password feature again", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
 #line 19
-this.ScenarioInitialize(scenarioInfo, ruleInfo);
+ await testRunner.ThenAsync("I change password back to original password", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                await testRunner.SkipScenarioAsync();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
 #line 20
-await testRunner.GivenAsync("I load the certification records from the \'Configuration\\Certification_TestCases\\" +
-                        "Certification_Deleteexistingrecord.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-#line 21
-await testRunner.GivenAsync("I navigate to Certification", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-#line 22
-await testRunner.WhenAsync("I see certification records", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 23
-await testRunner.WhenAsync("I delete the existing certification record", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 24
-await testRunner.ThenAsync("I should see a message that record deleted successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("I see the success message", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
