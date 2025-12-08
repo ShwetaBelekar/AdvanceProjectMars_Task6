@@ -148,18 +148,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
  await testRunner.ThenAsync("The new password should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 16
- await testRunner.ThenAsync("I verify if I can signin with new password", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("I verify and successfully signin with new password", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 17
- await testRunner.ThenAsync("I successfully signin with new password", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("I navigate to change password feature again and set password back to original pas" +
+                        "sword", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 18
- await testRunner.ThenAsync("I navigate to change password feature again", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 19
- await testRunner.ThenAsync("I change password back to original password", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 20
  await testRunner.ThenAsync("I see the success message", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

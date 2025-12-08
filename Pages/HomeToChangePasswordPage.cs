@@ -22,6 +22,7 @@ namespace AdvanceProjectMars_Task6.Pages
             Thread.Sleep(2000);
 
           hiTony.Click();
+            Thread.Sleep(3000);
             changePassword.Click();
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.mini.modal.transition.visible.active")));

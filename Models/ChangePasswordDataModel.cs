@@ -18,6 +18,9 @@ namespace AdvanceProjectMars_Task6.Models
         [JsonPropertyName("ConfirmPassword")]
         public string ConfirmPassword { get; set; }
 
+        [JsonPropertyName("Emailaddress")]
+        public string Emailaddress { get; set; }
+
         [JsonPropertyName("NewCurrentPassword")]
         public string NewCurrentPassword { get; set; }
 

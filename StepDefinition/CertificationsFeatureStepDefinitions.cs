@@ -88,7 +88,7 @@ namespace AdvanceProjectMars_Task6.StepDefinition
                 _certificationState.TotalCount = _certificationState.Records.Count;
 
                 // FIX: Use the correct property name: TotalCount
-                Console.WriteLine($"Successfully loaded {_certificationState.TotalCount} education records.");
+                Console.WriteLine($"Successfully loaded {_certificationState.TotalCount} certification records.");
             }
             catch (Exception ex)
             {

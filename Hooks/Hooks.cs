@@ -58,7 +58,12 @@ namespace AdvanceProjectMars_Task6.Hooks
                     var certificationState = new CertificationTestState();
                     _container.RegisterInstanceAs(certificationState);
                 }
-
+            else if (featureTags.Contains("ChangePassword"))
+            {
+                var changepasswordState = new ChangePasswordTestState();
+                _container.RegisterInstanceAs(changepasswordState);
+                
+            }
                 // You could also add common setup logic here (e.g., driver initialization)
             }
 
@@ -83,6 +88,7 @@ namespace AdvanceProjectMars_Task6.Hooks
                     CertificationsPage certificationsPageObj = new CertificationsPage();
                     certificationsPageObj.DeleteAllCertificationsRecords();
                 }
+            
             }
         
 

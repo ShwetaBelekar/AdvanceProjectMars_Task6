@@ -46,6 +46,9 @@
     <None Update="Configuration\Certification_TestCases\Certification_ValidRecord.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Configuration\ChangePassword_TestCases\Password_ChangePassword.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Configuration\Education_TestCases\DeleteEducationRecord_scenario.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

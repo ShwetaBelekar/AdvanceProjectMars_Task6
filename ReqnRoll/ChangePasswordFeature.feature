@@ -13,8 +13,6 @@ Scenario: I change password using external JSON data
 	When I navigate to change password feature
 	Then I create new password
 	Then The new password should be created successfully
-	Then I verify if I can signin with new password
-	Then I successfully signin with new password 
-	Then I navigate to change password feature again
-	Then I change password back to original password
+	Then I verify and successfully signin with new password
+	Then I navigate to change password feature again and set password back to original password
 	Then I see the success message
