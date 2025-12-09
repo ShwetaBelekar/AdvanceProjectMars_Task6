@@ -1,0 +1,13 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Create valid description using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "Description": "Hi I am TonyMoney"
+       
+      }
+    ]
+  }
+}

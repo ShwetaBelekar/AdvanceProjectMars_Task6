@@ -28,6 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\HomeToProfileDescriptionPage.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Hooks\Hooks.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -54,6 +58,9 @@
     </None>
     <None Update="Configuration\Education_TestCases\education_record_scenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Configuration\ProfileDescription_TestCases\ProfileDescription_CreateValid.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

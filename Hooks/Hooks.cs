@@ -64,6 +64,11 @@ namespace AdvanceProjectMars_Task6.Hooks
                 _container.RegisterInstanceAs(changepasswordState);
                 
             }
+            else if (featureTags.Contains("ProfileDescription"))
+            {
+                var profileDescriptionState = new ProfileDescriptionTestState();
+                _container.RegisterInstanceAs(profileDescriptionState);
+            }
                 // You could also add common setup logic here (e.g., driver initialization)
             }
 
