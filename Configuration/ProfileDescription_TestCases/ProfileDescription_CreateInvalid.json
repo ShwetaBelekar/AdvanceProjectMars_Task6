@@ -1,10 +1,13 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
+  "scenario_type": "Scenario",
+  "name": "Create invalid description using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "Description": "1234567890)(*&^%$$#@!?><"
+
+      }
+    ]
+  }
 }

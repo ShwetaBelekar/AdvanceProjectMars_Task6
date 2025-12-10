@@ -17,6 +17,9 @@ namespace AdvanceProjectMars_Task6.State
         public string LastActionMessage { get; set; } = string.Empty;
         public string PopupMessage { get; set; }
         public bool IsDescriptionVisible { get; set; }
+
+        public bool IsInvalidDescriptionVisible { get; set; }
+
         public string TestResult { get; set; }
 
         // 4. Batch status counters. (Replaces SuccessfulRecordsCount/TotalRecordsCount)

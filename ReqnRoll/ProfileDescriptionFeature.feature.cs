@@ -109,7 +109,7 @@ namespace AdvanceProjectMars_Task6.ReqnRoll
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ProfileDescriptionFeature.feature.ndjson", 3);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ProfileDescriptionFeature.feature.ndjson", 4);
         }
         
         [global::NUnit.Framework.TestAttribute()]
@@ -146,6 +146,45 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
 #line 15
  await testRunner.ThenAsync("I see Description created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::NUnit.Framework.TestAttribute()]
+        [global::NUnit.Framework.DescriptionAttribute("Create invalid description using external JSON data")]
+        [global::NUnit.Framework.CategoryAttribute("SingleRecord")]
+        public async global::System.Threading.Tasks.Task CreateInvalidDescriptionUsingExternalJSONData()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "SingleRecord"};
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "1";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Create invalid description using external JSON data", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 18
+this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 19
+ await testRunner.GivenAsync("I load the description records from the \'Configuration\\ProfileDescription_TestCas" +
+                        "es\\ProfileDescription_CreateInvalid.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 20
+ await testRunner.GivenAsync("I navigate to Description", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 21
+ await testRunner.ThenAsync("I create invalid Description record", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 22
+ await testRunner.ThenAsync("I see invalid description saved successfully Error in the system", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

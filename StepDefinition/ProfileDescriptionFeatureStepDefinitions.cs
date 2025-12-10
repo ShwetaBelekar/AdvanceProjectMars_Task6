@@ -119,6 +119,44 @@ namespace AdvanceProjectMars_Task6.StepDefinition
             }
             Console.WriteLine($"Test Result: {_profileDescriptionState.TestResult}");
         }
+        [Then("I create invalid Description record")]
+        public void ThenICreateInvalidDescriptionRecord()
+        {
+            if (_profileDescriptionState.Records == null || _profileDescriptionState.Records.Count == 0)
+            {
+                Assert.Fail("ProfileDescription records not found in ProfileDescriptionState. The JSON loading step failed or returned no data.");
+            }
+            _profileDescriptionState.SuccessCount = 0;
+            foreach (var record in _profileDescriptionState.Records)
+            {
+                // FIX: Store the current record using the correct property name: CurrentRecord
+                _profileDescriptionState.CurrentRecord = record;
+                _profileDescriptionState.CurrentRecord = _profileDescriptionState.Records.First();
+                Console.WriteLine($"--- Processing: {record.Description} ---");
+                profileDescriptionPageObj.CreateDescription(record.Description);
+
+            }
+        }
+
+        [Then("I see invalid description saved successfully Error in the system")]
+        public void ThenISeeInvalidDescriptionSavedSuccessfullyErrorInTheSystem()
+        {
+            Wait.WaitToBeVisible(Driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            _profileDescriptionState.PopupMessage = Driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']")).Text;
+            Console.WriteLine($"Popup Message: {_profileDescriptionState.PopupMessage}");
+            Thread.Sleep(3000);
+            _profileDescriptionState.IsInvalidDescriptionVisible = Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/div/div/div/span")).Text.Contains(_profileDescriptionState.CurrentRecord.Description);
+            Console.WriteLine($"Is Invalid Description Visible: {_profileDescriptionState.IsInvalidDescriptionVisible}");
+            if (_profileDescriptionState.IsInvalidDescriptionVisible)
+            {
+                _profileDescriptionState.TestResult = "Passed";
+            }
+            else
+            {
+                _profileDescriptionState.TestResult = "Failed";
+            }
+            Console.WriteLine($"Test Result: {_profileDescriptionState.TestResult}");
+        }
 
     }
 }
