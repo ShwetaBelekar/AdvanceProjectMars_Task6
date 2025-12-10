@@ -87,7 +87,8 @@ namespace AdvanceProjectMars_Task6.StepDefinition
             {
                 // FIX: Store the current record using the correct property name: CurrentRecord
                 _profileDescriptionState.CurrentRecord = record;
-
+                _profileDescriptionState.CurrentRecord = _profileDescriptionState.Records.First();
+                Console.WriteLine($"--- Processing: {record.Description} ---");
                 profileDescriptionPageObj.CreateDescription(record.Description);
 
             } 
@@ -99,10 +100,24 @@ namespace AdvanceProjectMars_Task6.StepDefinition
         [Then("I see Description created successfully")]
         public void ThenISeeDescriptionCreatedSuccessfully()
         {
+            //Wait.WaitToBeVisible(Driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            //IWebElement popupAlert = Driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            //string alertText = popupAlert.Text;
+            //Console.WriteLine("Alert text: " + alertText);
             Wait.WaitToBeVisible(Driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = Driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
-            string alertText = popupAlert.Text;
-            Console.WriteLine("Alert text: " + alertText);
+            _profileDescriptionState.PopupMessage = Driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']")).Text;
+            Console.WriteLine($"Popup Message: {_profileDescriptionState.PopupMessage}");
+            _profileDescriptionState.IsDescriptionVisible = Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/div/div/div/span")).Text.Contains(_profileDescriptionState.CurrentRecord.Description);
+            Console.WriteLine($"Is Description Visible: {_profileDescriptionState.IsDescriptionVisible}");
+            if (_profileDescriptionState.IsDescriptionVisible)
+            {
+                _profileDescriptionState.TestResult = "Passed";
+            }
+            else
+            {
+                _profileDescriptionState.TestResult = "Failed";
+            }
+            Console.WriteLine($"Test Result: {_profileDescriptionState.TestResult}");
         }
 
     }

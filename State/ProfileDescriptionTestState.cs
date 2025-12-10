@@ -15,6 +15,9 @@ namespace AdvanceProjectMars_Task6.State
         // 3. Status tracking fields (useful for capturing the immediate result of an action).
         public bool IsRecordCreatedSuccessfully { get; set; } = false;
         public string LastActionMessage { get; set; } = string.Empty;
+        public string PopupMessage { get; set; }
+        public bool IsDescriptionVisible { get; set; }
+        public string TestResult { get; set; }
 
         // 4. Batch status counters. (Replaces SuccessfulRecordsCount/TotalRecordsCount)
         public int SuccessCount { get; set; } = 0;

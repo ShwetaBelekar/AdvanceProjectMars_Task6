@@ -17,7 +17,7 @@ namespace AdvanceProjectMars_Task6.Pages
         public void CreateDescription(string Description)
         {
             descriptionTextbox.Clear();
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
             descriptionTextbox.SendKeys(Description);
             Thread.Sleep(3000);
             saveButton.Click();
