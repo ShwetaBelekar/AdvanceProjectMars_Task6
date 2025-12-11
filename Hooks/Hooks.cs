@@ -69,6 +69,12 @@ namespace AdvanceProjectMars_Task6.Hooks
                 var profileDescriptionState = new ProfileDescriptionTestState();
                 _container.RegisterInstanceAs(profileDescriptionState);
             }
+            else if (featureTags.Contains("ManageListings"))
+            {
+                var manageListingsState = new ManageListingsTestState();
+                _container.RegisterInstanceAs(manageListingsState);
+            }
+
                 // You could also add common setup logic here (e.g., driver initialization)
             }
 

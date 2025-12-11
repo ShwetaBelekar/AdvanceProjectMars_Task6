@@ -13,17 +13,18 @@ namespace AdvanceProjectMars_Task6.Pages
     public class ManageListingsPage : CommonDriver
     {
         private IWebElement listingTitle => Driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
-        private IWebElement deleteButton => Driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
+        private IWebElement listingDeleteButton(string Title) => Driver.FindElement(By.XPath($"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]/td[8]/div/button[3]/i"));
         private IWebElement yesButton => Driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
         
 
-        public void DeleteListing()
+        public void DeleteListing(string Title)
         {
+            //deleteButton.Click();
+            IWebElement deleteButton = listingDeleteButton(Title);
             deleteButton.Click();
-           
+
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
-           yesButton.Click();
             if (yesButton.Displayed && yesButton.Enabled)
             {
                 yesButton.Click();

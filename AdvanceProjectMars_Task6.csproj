@@ -59,6 +59,9 @@
     <None Update="Configuration\Education_TestCases\education_record_scenario.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Configuration\ManageListings_TestCases\ManageListings_Deletelisting.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Configuration\ProfileDescription_TestCases\ProfileDescription_CreateInvalid.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
