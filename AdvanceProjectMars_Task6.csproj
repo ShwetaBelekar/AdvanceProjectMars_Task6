@@ -62,6 +62,9 @@
     <None Update="Configuration\ManageListings_TestCases\ManageListings_Deletelisting.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Configuration\ManageListings_TestCases\ManageListings_Editlisting.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Configuration\ProfileDescription_TestCases\ProfileDescription_CreateInvalid.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -11,6 +11,9 @@ namespace AdvanceProjectMars_Task6.Models
     {
         [JsonPropertyName("Title")]
         public string Title { get; set; }
+        
+        [JsonPropertyName("EditTitle")]
+        public string EditTitle { get; set; }
     }
     public class ManageListingsExampleContainer
     {

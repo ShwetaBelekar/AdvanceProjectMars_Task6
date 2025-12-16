@@ -94,6 +94,29 @@ namespace AdvanceProjectMars_Task6.StepDefinition
             Console.WriteLine($"Popup Message: {_manageListingsState.PopupMessage}");
             Thread.Sleep(3000);
         }
+        [Then("I edit the listing")]
+        public void ThenIEditTheListing()
+        {
+            if (_manageListingsState.Records?.Count == 0)
+            {
+                Assert.Fail("ManageListings records not found in ManageListingsState. The JSON loading step failed or returned no data.");
+            }
+
+            _manageListingsState.SuccessCount = 0;
+            foreach (var record in _manageListingsState.Records)
+            {
+                _manageListingsState.CurrentRecord = record;
+                Console.WriteLine($"--- Processing: {record.Title} ---");
+                manageListingsPageObj.EditListing(record.Title, record.EditTitle);
+            }
+        }
+
+        [Then("the listing should be edited successfully")]
+        public void ThenTheListingShouldBeEditedSuccessfully()
+        {
+            
+            
+        }
 
 
     }
