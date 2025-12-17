@@ -1,0 +1,12 @@
+{
+  "scenario_type": "Scenario",
+  "name": "View listing from Manage Listings using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "Title": "yoga"
+      }
+    ]
+  }
+}

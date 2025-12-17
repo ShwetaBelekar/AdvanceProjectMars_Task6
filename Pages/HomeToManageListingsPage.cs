@@ -17,7 +17,7 @@ namespace AdvanceProjectMars_Task6.Pages
         {
             Thread.Sleep(2000);
             profileTab.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             manageListingsTab.Click();
             Thread.Sleep(2000);
         }

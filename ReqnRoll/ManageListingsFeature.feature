@@ -18,3 +18,10 @@ Given I load the listing records that i want to delete from the 'Configuration\M
 When I navigate to manage listings
 Then I edit the listing
 Then the listing should be edited successfully
+
+@SingleRecord
+Scenario: View listing from Manage Listings using external JSON data
+Given I load the listing records that i want to delete from the 'Configuration\ManageListings_TestCases\ManageListings_Viewlisting.json' file
+When I navigate to manage listings
+Then I view the listing
+Then the listing should be viewed successfully

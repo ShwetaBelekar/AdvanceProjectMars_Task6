@@ -15,6 +15,19 @@ namespace AdvanceProjectMars_Task6.Pages
     public class ManageListingsPage : CommonDriver
     {
         private IWebElement listingTitle => Driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+        //private IWebElement listingDeleteButton(string Title) => Driver.FindElement(By.XPath($"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]/td[8]/div/button[3]/i"));
+        private IWebElement yesButton => Driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
+        //private IWebElement editButton(string Title) => Driver.FindElement(By.XPath($"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]/td[8]/div/button[2]/i"));
+        private IWebElement titleButton => Driver.FindElement(By.XPath("//input[@name='title']"));
+        private IWebElement saveButton => Driver.FindElement(By.XPath("//input[@value='Save']"));
+        private IWebElement viewButton(string Title) => Driver.FindElement(By.XPath("$\"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]/td[8]/div/button[1]/i"));
+      
+        private IWebElement listingImage => Driver.FindElement(By.XPath("//img[@class='defaultImage']"));
+        
+
+        private IWebElement reviews => Driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[1]/div/div[1]/a/div/label"));
+        private IWebElement chatButton => Driver.FindElement(By.XPath("//a[@class='ui teal button']"));
+
         private IWebElement listingDeleteButton(string Title)
         {
             int currentPage = 1;
@@ -44,6 +57,30 @@ namespace AdvanceProjectMars_Task6.Pages
             // If we've reached this point, it means the listing was not found on any page
             throw new Exception($"Listing '{Title}' not found");
         }
+        private void ClickViewButton(string Title)
+        {
+            int currentPage = 1;
+            bool listingFound = false;
+
+            while (!listingFound)
+            {
+                try
+                {
+                    Thread.Sleep(2000);
+                    IWebElement listingRow = Driver.FindElement(By.XPath($"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]"));
+                    IWebElement viewButton = listingRow.FindElement(By.XPath("./td[8]/div/button[1]"));
+                    viewButton.Click();
+                    listingFound = true;
+                }
+                catch (NoSuchElementException)
+                {
+                    // If the listing is not found on the current page, navigate to the next page
+                    currentPage++;
+                    NavigateToNextPage();
+                }
+            }
+        }
+
         private IWebElement listingEditButton(string Title, out int pageNumber, out int rowNumber)
         {
             int currentPage = 1;
@@ -84,32 +121,7 @@ namespace AdvanceProjectMars_Task6.Pages
             rowNumber = -1;
             throw new Exception($"Listing '{Title}' not found");
         }
-        //private IWebElement listingEditButton(string Title)
-        //{
-        //    int currentPage = 1;
-        //    bool listingFound = false;
-
-        //    while (!listingFound)
-        //    {
-        //        try
-        //        {
-        //            Thread.Sleep(2000);
-        //            IWebElement listingRow = Driver.FindElement(By.XPath($"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]"));
-        //            IWebElement editButton = Driver.FindElement(By.XPath("./td[8]/div/button[2]/i"));
-        //            Thread.Sleep(3000);
-        //            listingFound = true;
-        //            return editButton;
-        //        }
-        //        catch (NoSuchElementException)
-        //        {
-        //            // If the listing is not found on the current page, navigate to the next page
-        //            currentPage++;
-        //            NavigateToNextPage();
-        //        }
-        //    }
-        //    throw new Exception($"Listing '{Title}' not found");
-        //}
-
+        
         private void NavigateToNextPage()
         {
             // Implement logic to navigate to the next page
@@ -119,12 +131,7 @@ namespace AdvanceProjectMars_Task6.Pages
             nextPageButton.Click();
         }
        
-        //private IWebElement listingDeleteButton(string Title) => Driver.FindElement(By.XPath($"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]/td[8]/div/button[3]/i"));
-        private IWebElement yesButton => Driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
-        //private IWebElement editButton(string Title) => Driver.FindElement(By.XPath($"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]/td[8]/div/button[2]/i"));
-        private IWebElement titleButton => Driver.FindElement(By.XPath("//input[@name='title']"));
-        private IWebElement saveButton => Driver.FindElement(By.XPath("//input[@value='Save']"));
-        private IWebElement viewButton(string Title) => Driver.FindElement(By.XPath("$\"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]/td[8]/div/button[1]/i"));
+      
         public void DeleteListing(string Title)
         {
             //deleteButton.Click();
@@ -141,6 +148,18 @@ namespace AdvanceProjectMars_Task6.Pages
             {
                 // Handle the case where the button is not visible or enabled
             }
+
+        }
+        public void ViewListing(string Title)
+        {
+            Thread.Sleep(2000);
+            ClickViewButton(Title);
+            
+            Thread.Sleep(2000);
+            string expectedName = "Tony Money";
+             string displayedName = Driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[1]/div/div[1]/a/h3")).Text;
+            Console.WriteLine(expectedName == displayedName ? "User name is displayed correctly." : $"User name is not displayed in full. Expected: {expectedName}, Actual: {displayedName}");
+            
 
         }
         public void EditListing(string Title, string EditTitle)
@@ -183,18 +202,7 @@ namespace AdvanceProjectMars_Task6.Pages
             Assert.That(titleElement.Text, Is.EqualTo(Title));
             Console.WriteLine($"Listing title verified on page {pageNumber}, row {rowNumber}");
         }
-        //public void EditListing(string Title, string EditTitle)
-        //{
-        //    //deleteButton.Click();
-        //    IWebElement editButton = listingEditButton(Title);
-        //    editButton.Click();
-        //    Thread.Sleep(2000);
-        //    titleButton.SendKeys(EditTitle);
-        //    Thread.Sleep(2000);
-        //    saveButton.Click();
-
-
-        //}
+        
 
     }
 }

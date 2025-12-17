@@ -108,7 +108,7 @@ namespace AdvanceProjectMars_Task6.ReqnRoll
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ManageListingsFeature.feature.ndjson", 4);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ManageListingsFeature.feature.ndjson", 5);
         }
         
         [global::NUnit.Framework.TestAttribute()]
@@ -184,6 +184,45 @@ await testRunner.ThenAsync("I edit the listing", ((string)(null)), ((global::Req
 #line hidden
 #line 20
 await testRunner.ThenAsync("the listing should be edited successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::NUnit.Framework.TestAttribute()]
+        [global::NUnit.Framework.DescriptionAttribute("View listing from Manage Listings using external JSON data")]
+        [global::NUnit.Framework.CategoryAttribute("SingleRecord")]
+        public async global::System.Threading.Tasks.Task ViewListingFromManageListingsUsingExternalJSONData()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "SingleRecord"};
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "2";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("View listing from Manage Listings using external JSON data", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 23
+this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 24
+await testRunner.GivenAsync("I load the listing records that i want to delete from the \'Configuration\\ManageLi" +
+                        "stings_TestCases\\ManageListings_Viewlisting.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 25
+await testRunner.WhenAsync("I navigate to manage listings", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 26
+await testRunner.ThenAsync("I view the listing", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 27
+await testRunner.ThenAsync("the listing should be viewed successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
