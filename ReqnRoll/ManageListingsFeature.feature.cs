@@ -108,7 +108,7 @@ namespace AdvanceProjectMars_Task6.ReqnRoll
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ManageListingsFeature.feature.ndjson", 5);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ManageListingsFeature.feature.ndjson", 6);
         }
         
         [global::NUnit.Framework.TestAttribute()]
@@ -223,6 +223,45 @@ await testRunner.ThenAsync("I view the listing", ((string)(null)), ((global::Req
 #line hidden
 #line 27
 await testRunner.ThenAsync("the listing should be viewed successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::NUnit.Framework.TestAttribute()]
+        [global::NUnit.Framework.DescriptionAttribute("Toggle Enable and Disable from Manage Listings using external JSON data")]
+        [global::NUnit.Framework.CategoryAttribute("SingleRecord")]
+        public async global::System.Threading.Tasks.Task ToggleEnableAndDisableFromManageListingsUsingExternalJSONData()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "SingleRecord"};
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "3";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Toggle Enable and Disable from Manage Listings using external JSON data", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 30
+this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 31
+await testRunner.GivenAsync("I load the listing records that i want to delete from the \'Configuration\\ManageLi" +
+                        "stings_TestCases\\ManageListings_ToggleDisableandEnable.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 32
+await testRunner.WhenAsync("I navigate to manage listings", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 33
+await testRunner.ThenAsync("I disable the listing", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 34
+await testRunner.ThenAsync("the listing should be disable successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

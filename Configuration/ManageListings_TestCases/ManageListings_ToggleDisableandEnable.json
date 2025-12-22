@@ -1,0 +1,12 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Toggle Enable and Disable from Manage Listings using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "Title": "singing"
+      }
+    ]
+  }
+}

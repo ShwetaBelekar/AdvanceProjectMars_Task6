@@ -171,6 +171,32 @@ namespace AdvanceProjectMars_Task6.StepDefinition
             
         }
 
+        [Then("I disable the listing")]
+        public void ThenIDisableTheListing()
+        {
+            if (_manageListingsState.Records?.Count == 0)
+            {
+                Assert.Fail("ManageListings records not found in ManageListingsState. The JSON loading step failed or returned no data.");
+            }
+
+            _manageListingsState.SuccessCount = 0;
+            foreach (var record in _manageListingsState.Records)
+            {
+                _manageListingsState.CurrentRecord = record;
+                Console.WriteLine($"--- Processing: {record.Title} ---");
+                manageListingsPageObj.ActiveListing(record.Title);
+            }
+        }
+
+        [Then("the listing should be disable successfully")]
+        public void ThenTheListingShouldBeDisableSuccessfully()
+            {
+                Wait.WaitToBeVisible(Driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+                IWebElement popupAlert = Driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+                string alertText = popupAlert.Text;
+                Console.WriteLine("Alert text: " + alertText);
+            }  
+
 
     }
 }

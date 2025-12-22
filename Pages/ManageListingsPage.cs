@@ -27,6 +27,15 @@ namespace AdvanceProjectMars_Task6.Pages
 
         private IWebElement reviews => Driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[1]/div/div[1]/a/div/label"));
         private IWebElement chatButton => Driver.FindElement(By.XPath("//a[@class='ui teal button']"));
+        // private IWebElement activeButton => Driver.FindElement(By.XPath("$\"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]/td[7]/div/input"));
+        private void NavigateToNextPage()
+        {
+            // Implement logic to navigate to the next page
+            // This might involve clicking on a pagination button
+            // You'll need to adjust this to fit your specific use case
+            IWebElement nextPageButton = Driver.FindElement(By.XPath("//button[@class='ui button otherPage']"));
+            nextPageButton.Click();
+        }
 
         private IWebElement listingDeleteButton(string Title)
         {
@@ -57,6 +66,57 @@ namespace AdvanceProjectMars_Task6.Pages
             // If we've reached this point, it means the listing was not found on any page
             throw new Exception($"Listing '{Title}' not found");
         }
+        public void DeleteListing(string Title)
+        {
+            //deleteButton.Click();
+            IWebElement deleteButton = listingDeleteButton(Title);
+            deleteButton.Click();
+
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(2));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
+            if (yesButton.Displayed && yesButton.Enabled)
+            {
+                yesButton.Click();
+            }
+            else
+            {
+                // Handle the case where the button is not visible or enabled
+            }
+
+        }
+        private IWebElement ListingActiveButton(string Title)
+        {
+            int currentPage = 1;
+            bool listingFound = false;
+
+            while (!listingFound)
+            {
+                try
+                {
+                    Thread.Sleep(2000);
+                    IWebElement listingRow = Driver.FindElement(By.XPath($"//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[td[3][contains(text(), '{Title}')]]"));
+                    IWebElement activeButton = listingRow.FindElement(By.XPath("./td[7]/div/input"));
+                   
+                    listingFound = true;
+                    return activeButton;
+
+                }
+                catch (NoSuchElementException)
+                {
+                    // If the listing is not found on the current page, navigate to the next page
+                    currentPage++;
+                    NavigateToNextPage();
+                }
+            }
+            throw new Exception($"Listing '{Title}' not found");
+        }
+        public void ActiveListing(string Title)
+        {
+            Thread.Sleep(3000);
+            IWebElement activeButton = ListingActiveButton(Title);
+            activeButton.Click();
+
+        }
         private void ClickViewButton(string Title)
         {
             int currentPage = 1;
@@ -79,6 +139,18 @@ namespace AdvanceProjectMars_Task6.Pages
                     NavigateToNextPage();
                 }
             }
+        }
+        public void ViewListing(string Title)
+        {
+            Thread.Sleep(2000);
+            ClickViewButton(Title);
+
+            Thread.Sleep(2000);
+            string expectedName = "Tony Money";
+            string displayedName = Driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[1]/div/div[1]/a/h3")).Text;
+            Console.WriteLine(expectedName == displayedName ? "User name is displayed correctly." : $"User name is not displayed in full. Expected: {expectedName}, Actual: {displayedName}");
+
+
         }
 
         private IWebElement listingEditButton(string Title, out int pageNumber, out int rowNumber)
@@ -121,47 +193,11 @@ namespace AdvanceProjectMars_Task6.Pages
             rowNumber = -1;
             throw new Exception($"Listing '{Title}' not found");
         }
+
         
-        private void NavigateToNextPage()
-        {
-            // Implement logic to navigate to the next page
-            // This might involve clicking on a pagination button
-            // You'll need to adjust this to fit your specific use case
-            IWebElement nextPageButton = Driver.FindElement(By.XPath("//button[@class='ui button otherPage']"));
-            nextPageButton.Click();
-        }
-       
-      
-        public void DeleteListing(string Title)
-        {
-            //deleteButton.Click();
-            IWebElement deleteButton = listingDeleteButton(Title);
-            deleteButton.Click();
 
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(2));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
-            if (yesButton.Displayed && yesButton.Enabled)
-            {
-                yesButton.Click();
-            }
-            else
-            {
-                // Handle the case where the button is not visible or enabled
-            }
 
-        }
-        public void ViewListing(string Title)
-        {
-            Thread.Sleep(2000);
-            ClickViewButton(Title);
-            
-            Thread.Sleep(2000);
-            string expectedName = "Tony Money";
-             string displayedName = Driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[1]/div/div[1]/a/h3")).Text;
-            Console.WriteLine(expectedName == displayedName ? "User name is displayed correctly." : $"User name is not displayed in full. Expected: {expectedName}, Actual: {displayedName}");
-            
-
-        }
+        
         public void EditListing(string Title, string EditTitle)
         {
             try
@@ -202,7 +238,7 @@ namespace AdvanceProjectMars_Task6.Pages
             Assert.That(titleElement.Text, Is.EqualTo(Title));
             Console.WriteLine($"Listing title verified on page {pageNumber}, row {rowNumber}");
         }
-        
+
 
     }
 }
