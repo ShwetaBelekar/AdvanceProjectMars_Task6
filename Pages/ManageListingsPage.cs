@@ -140,6 +140,14 @@ namespace AdvanceProjectMars_Task6.Pages
                 }
             }
         }
+        public void CheckRequestButton(string Title)
+        {
+            Thread.Sleep(2000);
+            ClickViewButton(Title);
+
+            Thread.Sleep(2000);
+
+        }
         public void ViewListing(string Title)
         {
             Thread.Sleep(2000);

@@ -1,13 +1,12 @@
 {
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "target": "es5"
-  },
-  "exclude": [
-    "node_modules",
-    "wwwroot"
-  ]
+  "scenario_type": "Scenario",
+  "name": "Send Request button is disabled for own listings in Manage Listings feature using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "Title": "yoga"
+      }
+    ]
+  }
 }

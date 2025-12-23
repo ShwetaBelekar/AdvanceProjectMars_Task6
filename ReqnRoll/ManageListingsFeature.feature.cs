@@ -108,7 +108,7 @@ namespace AdvanceProjectMars_Task6.ReqnRoll
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ManageListingsFeature.feature.ndjson", 6);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("ReqnRoll/ManageListingsFeature.feature.ndjson", 7);
         }
         
         [global::NUnit.Framework.TestAttribute()]
@@ -134,8 +134,8 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 10
- await testRunner.GivenAsync("I load the listing records that i want to delete from the \'Configuration\\ManageLi" +
-                        "stings_TestCases\\ManageListings_Deletelisting.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("I load the test data from \'Configuration\\ManageListings_TestCases\\ManageListings_" +
+                        "Deletelisting.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 11
  await testRunner.WhenAsync("I navigate to manage listings", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -173,8 +173,8 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 17
-await testRunner.GivenAsync("I load the listing records that i want to delete from the \'Configuration\\ManageLi" +
-                        "stings_TestCases\\ManageListings_Editlisting.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+await testRunner.GivenAsync("I load the test data from \'Configuration\\ManageListings_TestCases\\ManageListings_" +
+                        "Editlisting.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 18
 await testRunner.WhenAsync("I navigate to manage listings", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -212,8 +212,8 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 24
-await testRunner.GivenAsync("I load the listing records that i want to delete from the \'Configuration\\ManageLi" +
-                        "stings_TestCases\\ManageListings_Viewlisting.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+await testRunner.GivenAsync("I load the test data from \'Configuration\\ManageListings_TestCases\\ManageListings_" +
+                        "Viewlisting.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 25
 await testRunner.WhenAsync("I navigate to manage listings", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -251,8 +251,8 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 31
-await testRunner.GivenAsync("I load the listing records that i want to delete from the \'Configuration\\ManageLi" +
-                        "stings_TestCases\\ManageListings_ToggleDisableandEnable.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+await testRunner.GivenAsync("I load the test data from \'Configuration\\ManageListings_TestCases\\ManageListings_" +
+                        "ToggleDisableandEnable.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 32
 await testRunner.WhenAsync("I navigate to manage listings", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -262,6 +262,47 @@ await testRunner.ThenAsync("I disable the listing", ((string)(null)), ((global::
 #line hidden
 #line 34
 await testRunner.ThenAsync("the listing should be disable successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::NUnit.Framework.TestAttribute()]
+        [global::NUnit.Framework.DescriptionAttribute("Send Request button is disabled for own listings in Manage Listings feature using" +
+            " external JSON data")]
+        [global::NUnit.Framework.CategoryAttribute("SingleRecord")]
+        public async global::System.Threading.Tasks.Task SendRequestButtonIsDisabledForOwnListingsInManageListingsFeatureUsingExternalJSONData()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "SingleRecord"};
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "4";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Send Request button is disabled for own listings in Manage Listings feature using" +
+                    " external JSON data", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 37
+this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 38
+    await testRunner.GivenAsync("I load the test data from \'Configuration\\ManageListings_TestCases\\ManageListings_" +
+                        "SendRequest.json\' file", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 39
+    await testRunner.WhenAsync("I navigate to manage listings", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 40
+    await testRunner.WhenAsync("I view a listings", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 41
+    await testRunner.ThenAsync("the Send Request button should be disabled", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

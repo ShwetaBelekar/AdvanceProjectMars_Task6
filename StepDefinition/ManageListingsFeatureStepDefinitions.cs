@@ -4,6 +4,7 @@ using AdvanceProjectMars_Task6.State;
 using AdvanceProjectMars_Task6.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using Reqnroll;
 using System;
 using System.Collections.Generic;
@@ -25,9 +26,8 @@ namespace AdvanceProjectMars_Task6.StepDefinition
         }
         private ManageListingsPage manageListingsPageObj = new ManageListingsPage();
         private HomeToManageListingsPage homeToManageListingsPageObj = new HomeToManageListingsPage();
-
-        [Given("I load the listing records that i want to delete from the {string} file")]
-        public void GivenILoadTheListingRecordsThatIWantToDeleteFromTheFile(string relativeFilePath)
+        [Given("I load the test data from {string} file")]
+        public void GivenILoadTheTestDataFromFile(string relativeFilePath)
         {
             try
             {
@@ -195,7 +195,60 @@ namespace AdvanceProjectMars_Task6.StepDefinition
                 IWebElement popupAlert = Driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
                 string alertText = popupAlert.Text;
                 Console.WriteLine("Alert text: " + alertText);
-            }  
+            }
+        [When("I view a listings")]
+        public void WhenIViewAListings()
+        {
+            if (_manageListingsState.Records?.Count == 0)
+            {
+                Assert.Fail("ManageListings records not found in ManageListingsState. The JSON loading step failed or returned no data.");
+            }
+
+            _manageListingsState.SuccessCount = 0;
+            foreach (var record in _manageListingsState.Records)
+            {
+                _manageListingsState.CurrentRecord = record;
+                Console.WriteLine($"--- Processing: {record.Title} ---");
+                manageListingsPageObj.CheckRequestButton(record.Title);
+            }
+        }
+
+        [Then("the Send Request button should be disabled")]
+        public void ThenTheSendRequestButtonShouldBeDisabled()
+        {
+            try
+            {
+                // Check if the request button is disabled
+                Thread.Sleep(3000);
+                IWebElement requestButton = Driver.FindElement(By.XPath("//div[@class='ui teal disabled button']"));
+                Actions actions = new Actions(Driver);
+                actions.MoveToElement(requestButton).Perform();
+               
+                requestButton.Click(); // Try to click the button
+                Assert.That(requestButton.Enabled, Is.False);
+                Console.WriteLine("Request button is disabled and doesn't trigger any action. Test Passed.");
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("Request button is not disabled. Test Failed.");
+                Assert.Fail("Request button is not disabled.");
+            }
+            catch (ElementNotInteractableException)
+            {
+                Console.WriteLine("Request button is disabled and can't be clicked. Test Passed.");
+            }
+            //try
+            //{
+            //    // Check if the request button is disabled
+            //    IWebElement requestButton = Driver.FindElement(By.XPath("//div[@class='ui teal disabled button']"));
+            //    Console.WriteLine("Request button is disabled. Test Passed.");
+            //}
+            //catch (NoSuchElementException)
+            //{
+            //    Console.WriteLine("Request button is not disabled. Test Failed.");
+            //    Assert.Fail("Request button is not disabled.");
+            //}
+        }
 
 
     }

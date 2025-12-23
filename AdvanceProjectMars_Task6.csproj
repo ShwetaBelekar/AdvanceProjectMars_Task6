@@ -65,6 +65,9 @@
     <None Update="Configuration\ManageListings_TestCases\ManageListings_Editlisting.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Configuration\ManageListings_TestCases\ManageListings_SendRequest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Configuration\ManageListings_TestCases\ManageListings_ToggleDisableandEnable.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
