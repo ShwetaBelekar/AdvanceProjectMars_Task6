@@ -1,0 +1,18 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Manage Request Sent Request and Received Request using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "searchSkill": "Automation",
+        "selectSeller": "Lock Key",
+        "selectSkill": "Cypress",
+        "messageToSeller": "I am interested in your Skill",
+        "Emailaddress": "lockkey@gmail.com",
+        "Password": "Lock@123",
+        "Sender": "Tony"
+      }
+    ]
+  }
+}

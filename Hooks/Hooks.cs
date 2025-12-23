@@ -74,6 +74,11 @@ namespace AdvanceProjectMars_Task6.Hooks
                 var manageListingsState = new ManageListingsTestState();
                 _container.RegisterInstanceAs(manageListingsState);
             }
+            else if (featureTags.Contains("ManageRequests"))
+            {
+                var manageRequestsState = new ManageRequestsTestState();
+                _container.RegisterInstanceAs(manageRequestsState);
+            }
 
                 // You could also add common setup logic here (e.g., driver initialization)
             }

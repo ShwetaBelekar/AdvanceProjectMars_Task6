@@ -1,8 +1,9 @@
 ﻿@ManageListings
 Feature: ManageListingsFeature
 As a Project_Mars user
-    I want to delete a listing
-    So that I can remove unwanted listings
+    I should be able to view, edit, delete my listings
+    So that I can manage my listings correctly
+    A short summary of the feature:This feature uses an external JSON file to drive the creation
 
 
 @SingleRecord
