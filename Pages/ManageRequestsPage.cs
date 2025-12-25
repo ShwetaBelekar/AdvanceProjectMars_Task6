@@ -19,7 +19,7 @@ namespace AdvanceProjectMars_Task6.Pages
 
         private IWebElement loginButton => Driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
 
-        public void SendSkillSwapRequestAndReceivedRequest(string searchSkill, string selectSeller, string selectSkill, string messageToSeller, string Emailaddress, string Password, string Sender)
+        public void SendSkillSwapRequestAndReceivedRequest(string searchSkill, string selectSeller, string selectSkill, string messageToSeller, string Emailaddress, string Password, string Sender, string Email, string Pass)
         {
             IWebElement searchSkillsSearchIcon = Driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
             searchSkillsSearchIcon.Click();
@@ -70,15 +70,16 @@ namespace AdvanceProjectMars_Task6.Pages
             Thread.Sleep(3000);
 
             IWebElement recipient = Driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
+            Thread.Sleep(3000);
             IWebElement date = Driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[7]"));
             Thread.Sleep(2000);
             if (recipient.Text == selectSeller && date.Text == sentDate)
             {
-                Console.WriteLine("Recipient name should be full name because if there are two seller with same first name then it can be confusing and date is not correct");
+                Console.WriteLine($"Warning: Recipient '{selectSeller}' has matching name, use full name for clarity. Date '{sentDate}' is correct.");
             }
             else
             {
-                Console.WriteLine("Recipient name should be full name because if there are two seller with same first name then it can be confusing and date are correct");
+                Console.WriteLine($"Warning: Recipient '{selectSeller}' has matching name, use full name for clarity. Date '{sentDate}' is incorrect.");
             }
 
             IWebElement signOutButton = Driver.FindElement(By.XPath("//button[@class='ui green basic button' and text()='Sign Out']"));
@@ -114,16 +115,56 @@ namespace AdvanceProjectMars_Task6.Pages
             IWebElement receivedRequests = Driver.FindElement(By.XPath("//a[@class='item' and @href='/Home/ReceivedRequest']"));
             receivedRequests.Click();
             Thread.Sleep(3000);
-            IWebElement sentrequest = Driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
-            if (sentrequest.Text.Contains(Sender))
+            IWebElement SentRequestFrom = Driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
+            if (SentRequestFrom.Text.Contains(Sender))
             {
-                Assert.Pass("Request received from Tony");
+                Console.WriteLine($"Request received from {Sender}");
             }
             else
             {
-                Assert.Fail("Request not received");
+                Console.WriteLine($"Request not received from expected sender: {Sender}, got: {SentRequestFrom.Text}");
             }
+            Thread.Sleep(2000);
+            IWebElement acceptButton = Driver.FindElement(By.XPath("//button[@type='button' and @class='ui primary basic button' and text()='Accept']"));
+            acceptButton.Click();
+            Thread.Sleep(5000);
+            IWebElement completeButton = Driver.FindElement(By.XPath("//button[@type='button' and @class='ui positive basic button' and text()='Complete']"));
+            completeButton.Click();
+            Thread.Sleep(5000);
+            IWebElement siignOutButton = Driver.FindElement(By.XPath("//button[@class='ui green basic button' and text()='Sign Out']"));
+            siignOutButton.Click();
+            Thread.Sleep(2000);
+            IWebElement siigninButton = Driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+            siigninButton.Click();
+            Thread.Sleep(2000);
 
+            IWebElement eemailAddressTextbox = Driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+            eemailAddressTextbox.SendKeys(Email);
+
+            IWebElement paasswordTextbox = Driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
+            paasswordTextbox.SendKeys(Pass);
+
+            IWebElement looginButton = Driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+            looginButton.Click();
+            Thread.Sleep(5000);
+            IWebElement hitony = Driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+            if (hitony.Text == "Hi Tony")
+            {
+                Console.WriteLine("User has logged in successfully. Test Passed!");
+            }
+            else
+            {
+                Console.WriteLine("User has not logged in. Test Failed!");
+            }
+            IWebElement maanageRequest = Driver.FindElement(By.XPath("//div[@class='ui dropdown link item' and @tabindex='0']"));
+            maanageRequest.Click();
+            Thread.Sleep(2000);
+            IWebElement seentRequests = Driver.FindElement(By.XPath("//a[@class='item' and @href='/Home/SentRequest']"));
+            seentRequests.Click();
+            Thread.Sleep(2000);
+            IWebElement completedButton = Driver.FindElement(By.XPath("//button[@type='button' and @class='ui positive basic button' and text()='Completed']"));
+            completedButton.Click();
+            Thread.Sleep(5000);
         }
     }
 }

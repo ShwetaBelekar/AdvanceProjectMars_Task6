@@ -74,7 +74,7 @@ namespace AdvanceProjectMars_Task6.StepDefinition
             {
                 _manageRequestsState.CurrentRecord = record;
                 Console.WriteLine($"--- Processing: {record.searchSkill} ---");
-                manageRequestsPageObj.SendSkillSwapRequestAndReceivedRequest(record.searchSkill, record.selectSeller, record.selectSkill, record.messageToSeller, record.Emailaddress, record.Password, record.Sender);
+                manageRequestsPageObj.SendSkillSwapRequestAndReceivedRequest(record.searchSkill, record.selectSeller, record.selectSkill, record.messageToSeller, record.Emailaddress, record.Password, record.Sender, record.Email, record.Pass);
             }
 
         }

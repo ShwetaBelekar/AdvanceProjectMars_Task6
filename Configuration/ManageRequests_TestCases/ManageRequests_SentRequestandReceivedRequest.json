@@ -5,13 +5,15 @@
   "examples": {
     "data": [
       {
-        "searchSkill": "Automation",
-        "selectSeller": "Lock Key",
-        "selectSkill": "Cypress",
+        "searchSkill": "Cooking",
+        "selectSeller": "Sun Moon",
+        "selectSkill": "Learn Cooking",
         "messageToSeller": "I am interested in your Skill",
-        "Emailaddress": "lockkey@gmail.com",
-        "Password": "Lock@123",
-        "Sender": "Tony"
+        "Emailaddress": "moonsun@gmail.com",
+        "Password": "Sun@123",
+        "Sender": "Tony",
+        "Email": "moneytony@ymail.com",
+        "Pass":  "Tonymoney@2025"
       }
     ]
   }

@@ -25,8 +25,14 @@ namespace AdvanceProjectMars_Task6.Models
         public string Emailaddress { get; set; }
         [JsonPropertyName("Password")]
         public string Password { get; set; }
+       
         [JsonPropertyName("Sender")]
         public string Sender { get; set; }
+
+        [JsonPropertyName("Email")]
+        public string Email { get; set; }
+        [JsonPropertyName("Pass")]
+        public string Pass { get; set; }
     }
     public class ManageRequestsExampleContainer
     {
