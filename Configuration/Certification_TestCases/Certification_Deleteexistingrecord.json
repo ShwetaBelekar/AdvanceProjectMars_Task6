@@ -1,0 +1,15 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Delete existing certification records using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "CertificateorAward": "Test Analyst",
+        "CertifiedFrom": "Industry Connect",
+        "Year": 2020
+
+      }
+    ]
+  }
+}

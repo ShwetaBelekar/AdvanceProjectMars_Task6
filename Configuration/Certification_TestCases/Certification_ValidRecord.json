@@ -1,0 +1,30 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Create multiple valid certification records using external JSON data",
+  "tags": [ "@MultipleRecords" ],
+  "examples": {
+    "data": [
+      {
+        "CertificateorAward": "Test Analyst",
+        "CertifiedFrom": "Industry Connect",
+        "Year": 2020
+        
+      },
+      {
+        "CertificateorAward": "Web Development",
+        "CertifiedFrom": "Connect Industry",
+        "Year": 2007
+      },
+      {
+        "CertificateorAward": "Data Analyst",
+        "CertifiedFrom": "IT School",
+        "Year": 2024
+      },
+      {
+        "CertificateorAward": "Data Science",
+        "CertifiedFrom": "NYU",
+        "Year": 2017
+      }
+    ]
+  }
+}

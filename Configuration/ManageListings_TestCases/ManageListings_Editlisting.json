@@ -1,0 +1,13 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Edit listing from Manage Listings using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "Title": "Cypress",
+        "EditTitle": "Selenium"
+      }
+    ]
+  }
+}

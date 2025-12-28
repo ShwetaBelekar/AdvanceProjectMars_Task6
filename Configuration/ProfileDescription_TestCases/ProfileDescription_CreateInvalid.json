@@ -1,0 +1,13 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Create invalid description using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "Description": "1234567890)(*&^%$$#@!?><"
+
+      }
+    ]
+  }
+}

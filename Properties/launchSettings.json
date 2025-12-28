@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AdvanceProjectMars_Task6": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

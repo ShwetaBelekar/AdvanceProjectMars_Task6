@@ -1,0 +1,17 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Delete existing education records using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "CollegeUniversityName": "Mumbai University",
+        "CountryofCollegeUniversity": "India",
+        "Title": "PHD",
+        "Degree": "Economics",
+        "YearofGraduation": 2007
+      }
+
+    ]
+  }
+}

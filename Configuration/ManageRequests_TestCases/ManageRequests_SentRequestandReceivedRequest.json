@@ -1,0 +1,20 @@
+{
+  "scenario_type": "Scenario",
+  "name": "Manage Request Sent Request and Received Request using external JSON data",
+  "tags": [ "@SingleRecord" ],
+  "examples": {
+    "data": [
+      {
+        "searchSkill": "Cooking",
+        "selectSeller": "Sun Moon",
+        "selectSkill": "Learn Cooking",
+        "messageToSeller": "I am interested in your Skill",
+        "Emailaddress": "moonsun@gmail.com",
+        "Password": "Sun@123",
+        "Sender": "Tony",
+        "Email": "moneytony@ymail.com",
+        "Pass":  "Tonymoney@2025"
+      }
+    ]
+  }
+}
